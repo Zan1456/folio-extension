@@ -1301,3 +1301,76 @@ h2 {
 .update-button .material-icons-round {
   font-size: 18px;
 }
+
+.folio-ad-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #00D2A9 0%, #00b896 100%);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 4px 16px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 12px rgba(0, 210, 169, 0.35);
+}
+
+.folio-ad-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 210, 169, 0.5);
+}
+
+.folio-ad-card:active {
+  transform: translateY(0);
+}
+
+.folio-ad-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.folio-ad-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.folio-ad-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.folio-ad-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.folio-ad-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.folio-ad-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.folio-ad-right .material-icons-round {
+  font-size: 16px;
+  color: #fff;
+}
+
+.folio-ad-cta {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
