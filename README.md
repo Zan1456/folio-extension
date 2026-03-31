@@ -1,6 +1,6 @@
 <p align="center">
   <img width="150" height="150" alt="firka_logo_128" src="https://github.com/QwIT-Development/firka-extension/blob/main/images/firka_logo_128.png?raw=true" />
-  <h1 align="center">Firka extension</h1>
+  <h1 align="center">Folio extension</h1>
 </p>
 
 
@@ -13,19 +13,19 @@
     <img src="https://img.shields.io/github/downloads-pre/QwIT-Development/firka-extension/latest/total?style=for-the-badge&logo=github&logoColor=EAF7CC&label=Let%C3%B6lt%C3%A9sek&labelColor=141905&color=A7DC22" alt="Downloads">
   </a>-->
   <a href="https://discord.gg/6DvjyPAw2T">
-    <img src="https://img.shields.io/discord/1111649116020285532?style=for-the-badge&logo=discord&logoColor=EAF7CC&label=Discord&labelColor=0D1202&color=A7DC22" alt="Discord">
+    <img src="https://img.shields.io/discord/1111649116020285532?style=for-the-badge&logo=discord&logoColor=EAF7CC&label=Discord&labelColor=051219&color=00D2A9" alt="Discord">
   </a>
   <a href="https://github.com/QwIT-Development/firka-extension/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/QwIT-Development/firka-extension?style=for-the-badge&logo=discord&logoColor=EAF7CC&label=Discord&labelColor=0D1202&color=A7DC22" alt="License">
+    <img src="https://img.shields.io/github/license/QwIT-Development/firka-extension?style=for-the-badge&logo=discord&logoColor=EAF7CC&label=Discord&labelColor=051219&color=00D2A9" alt="License">
   </a>
 </p>
 
 <p align="center">
   <a href="https://chromewebstore.google.com/detail/firxa/emafoaifbfppcccgfmpcoheonhjnpldj?hl=hu">
-    <img src="https://github.com/QwIT-Development/firka-extension/blob/main/images/chrome.png?raw=true" alt="Elérhető a Chrome Web Store-on" width="200">
+    <img src="https://github.com/zan1456/folio-extension/blob/main/images/chrome.png?raw=true" alt="Elérhető a Chrome Web Store-on" width="200">
   </a>
-  <a href="https://github.com/QwIT-Development/firka-extension/releases">
-    <img src="https://github.com/QwIT-Development/firka-extension/blob/main/images/firefoxact.png?raw=true" alt="Elérhető a Firefox add-ons oldalon" width="200">
+  <a href="https://github.com/zan1456/folio-extension/releases">
+    <img src="https://github.com/zan1456/folio-extension/blob/main/images/firefoxact.png?raw=true" alt="Elérhető a Firefox add-ons oldalon" width="200">
   </a>
 </p>
 
