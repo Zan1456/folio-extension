@@ -57,8 +57,8 @@ async function transformLoginPage() {
         <div class="login-card">
           <div class="card-header">
             <p class="logo-text">
-              <img src=${chrome.runtime.getURL("images/firka_logo.png")} alt="Firka" class="logo">
-              Firka
+              <img src=${chrome.runtime.getURL("images/firka_logo.png")} alt="Folio" class="logo">
+              Folio
             </p>
             ${!loginSettings.hideSchoolInfo ? `<h1 class="school-name">${schoolInfo.name}</h1>
             <div class="school-details">

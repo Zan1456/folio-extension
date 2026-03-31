@@ -44,8 +44,8 @@ const createTemplate = {
       <header class="kreta-header">
         <div class="school-info">
           <p class="logo-text">
-            <img src="${chrome.runtime.getURL("images/firka_logo.png")}" alt="Firka" class="logo">
-            Firka
+            <img src="${chrome.runtime.getURL("images/firka_logo.png")}" alt="Folio" class="logo">
+            Folio
           </p>
           <div class="school-details" title="${schoolNameFull}">
             ${shortenedSchoolName}
@@ -88,8 +88,8 @@ const createTemplate = {
       <header class="mobile-header">
         <div class="school-info">
           <p class="logo-text">
-            <img src="${chrome.runtime.getURL("images/firka_logo.png")}" alt="Firka" class="logo">
-            Firka
+            <img src="${chrome.runtime.getURL("images/firka_logo.png")}" alt="Folio" class="logo">
+            Folio
           </p>
           <div class="school-details" title="${schoolNameFull}">
             ${shortenedSchoolName}

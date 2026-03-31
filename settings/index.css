@@ -409,23 +409,23 @@ h2 {
 }
 
 .theme-preview.light-green {
-  background:#FAFFF0;
+  background:#F0FDFB;
 }
 .theme-preview.light-green .preview-header {
-  background:#F3FBDE;
+  background:#E0F7F4;
 }
 .theme-preview.light-green .preview-card {
-  background:#FEFFFD;
+  background:#F5FFFE;
 }
 
 .theme-preview.dark-green {
-  background:#0D1202;
+  background:#021A16;
 }
 .theme-preview.dark-green .preview-header {
-  background:#141905;
+  background:#062420;
 }
 .theme-preview.dark-green .preview-card {
-  background:#20290b;
+  background:#0B3530;
 }
 .preview-header {
   height:30%;
