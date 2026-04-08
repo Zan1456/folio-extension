@@ -1074,7 +1074,7 @@ async function checkForUpdates() {
     const manifest = chrome.runtime.getManifest();
     const currentVersion = manifest.version;
 
-    const response = await fetch('https://api.github.com/repos/QwIT-Development/firka-extension/releases/latest');
+    const response = await fetch('https://api.github.com/repos/zan1456/folio-extension/releases/latest');
     if (!response.ok) {
       console.error('Failed to fetch latest release');
       return;

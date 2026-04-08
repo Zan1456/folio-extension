@@ -92,7 +92,7 @@
     },
     "about": {
       "title": "Névjegy",
-      "description": "A Firka egy nyílt forráskódú projekt, amely a KRÉTA rendszerhez készít saját felhasználói felületet.",
+      "description": "A Folio egy nyílt forráskódú projekt, amely a KRÉTA rendszerhez készít saját felhasználói felületet.",
       "github": "GitHub"
     },
     "support": {
@@ -390,7 +390,9 @@
     "code_required": "Kérjük, add meg az egyszeri jelszót.",
     "verify_button": "Kód ellenőrzése",
     "verifying": "Ellenőrzés...",
-    "trust_device": "Eszköz megbízhatónak jelölése"
+    "trust_device": "Eszköz megbízhatónak jelölése",
+    "instruction": "Add meg a hitelesítő alkalmazásban megjelenő 6 számjegyű kódot.",
+    "invalid_code": "Hibás kód. Kérjük, próbáld újra."
   },
   "logout": {
     "title": "Kijelentkezés",
@@ -513,14 +515,14 @@
   },
   "about": {
     "title": "Névjegy",
-    "description": "A Firka egy nyílt forráskódú projekt, amely a KRÉTA rendszerhez készít saját felhasználói felületet.",
+    "description": "A Folio egy nyílt forráskódú projekt, amely a KRÉTA rendszerhez készít saját felhasználói felületet.",
     "support_title": "Támogatás",
     "support_description": "Ha tetszik a munkánk és szeretnéd támogatni a fejlesztést, az alábbi módon teheted meg:",
-    "version": "v1.3.0"
+    "version": "v1.5.0"
   },
   "app": {
-    "title": "Firka - KRÉTA",
-    "settings_title": "Firxa - Beállítások"
+    "title": "Folio - KRÉTA",
+    "settings_title": "Folio - Beállítások"
   },
   "forgotpassword": {
     "title": "Elfelejtett jelszó",

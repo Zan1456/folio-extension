@@ -90,7 +90,7 @@
     },
     "about": {
       "title": "About",
-      "description": "Firka is an open-source project that creates a custom user interface for the KRÉTA system.",
+      "description": "Folio is an open-source project that creates a custom user interface for the KRÉTA system.",
       "github": "GitHub"
     },
     "support": {
@@ -388,7 +388,9 @@
     "code_required": "Please enter the one-time password.",
     "verify_button": "Verify code",
     "verifying": "Verifying...",
-    "trust_device": "Trust this device"
+    "trust_device": "Trust this device",
+    "instruction": "Enter the 6-digit code shown in your authenticator app.",
+    "invalid_code": "Invalid code. Please try again."
   },
   "logout": {
     "title": "Logout",
@@ -511,14 +513,14 @@
   },
   "about": {
     "title": "About",
-    "description": "Firka is an open source project that creates a custom user interface for the KRÉTA system.",
+    "description": "Folio is an open source project that creates a custom user interface for the KRÉTA system.",
     "support_title": "Support",
     "support_description": "If you like our work and want to support development, you can do so in the following way:",
-    "version": "v1.3.0"
+    "version": "v1.5.0"
   },
   "app": {
-    "title": "Firka - KRÉTA",
-    "settings_title": "Firka - Settings"
+    "title": "Folio - KRÉTA",
+    "settings_title": "Folio - Settings"
   },
   "forgotpassword": {
     "title": "Forgot Password",

@@ -568,7 +568,7 @@ body.modal-open {
   padding: 15px;
   line-height: 1.6;
   color: var(--text-secondary);
-  max-height: 300px;
+  max-height: 700px;
   overflow-y: auto;
 }
 

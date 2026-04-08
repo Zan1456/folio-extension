@@ -45,12 +45,12 @@ async function applyFirkaStyling() {
     logoText.className = 'logo-text';
     
     const logoImg = document.createElement('img');
-    logoImg.src = chrome.runtime.getURL('images/firka_logo.png');
-    logoImg.alt = 'Firka';
+    logoImg.src = chrome.runtime.getURL('images/folio_logo.png');
+    logoImg.alt = 'Folio';
     logoImg.className = 'logos';
     
     logoText.appendChild(logoImg);
-    logoText.appendChild(document.createTextNode('Firka'));
+    logoText.appendChild(document.createTextNode('Folio'));
     
     const searchTitle = document.createElement('h1');
     searchTitle.className = 'search-title';

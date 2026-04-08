@@ -11,8 +11,8 @@ const loadingScreen = {
     loadingContent.className = 'loading-content';
     
     const loadingLogo = document.createElement('img');
-    loadingLogo.src = chrome.runtime.getURL("images/loading.gif");
-    loadingLogo.alt = 'Firka';
+    loadingLogo.src = chrome.runtime.getURL("images/folio_logo.png");
+    loadingLogo.alt = 'Folio';
     loadingLogo.className = 'loading-logo';
     
     const loadingText = document.createElement('div');

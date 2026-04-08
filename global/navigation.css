@@ -159,7 +159,7 @@
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  background: var(--card-card);
+  background: var(--button-secondaryFill);
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   min-width: 180px;
@@ -185,8 +185,8 @@
 }
 
 .dropdown-item:hover {
-  background: var(--hover);
-  color: var(--accent-accent);
+  background: var(--accent-15);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
@@ -197,7 +197,7 @@
 }
 
 .dropdown-item:hover img {
-  filter: brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(2000%) hue-rotate(90deg) brightness(90%) contrast(95%);
+  filter: brightness(0) saturate(100%) invert(55%) sepia(60%) saturate(700%) hue-rotate(120deg) brightness(100%) contrast(100%);
 }
 
 @keyframes dropdownShow {
@@ -418,7 +418,7 @@
   }
 
   .mobile-dropdown-item:hover img {
-    filter: brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(2000%) hue-rotate(90deg) brightness(90%) contrast(95%);
+    filter: brightness(0) saturate(100%) invert(55%) sepia(60%) saturate(700%) hue-rotate(120deg) brightness(100%) contrast(100%);
   }
 
   body {

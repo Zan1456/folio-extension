@@ -269,57 +269,6 @@ body {
   white-space:nowrap;
   z-index:1;
 }
-.user-profile {
-  position:relative;
-  justify-self:flex-end;
-}
-.user-dropdown-btn {
-  display:flex;
-  align-items:center;
-  gap:0.75rem;
-  background:var(--button-secondaryFill);
-  border:none;
-  cursor:pointer;
-  padding:8px 12px;
-  border-radius:12px;
-  transition:all 0.2s ease;
-  box-shadow:0px 1px var(--shadow-blur, 2px) 0px var(--accent-shadow);
-}
-.user-dropdown-btn:hover {
-  background:var(--accent-15);
-}
-.user-info {
-  text-align:right;
-}
-.user-dropdown {
-  position:absolute;
-  top:100%;
-  right:0;
-  margin-top:0.5rem;
-  background:var(--card-card);
-  border-radius:12px;
-  box-shadow:0px 1px var(--shadow-blur) 0px var(--accent-shadow);
-  width:200px;
-  display:none;
-  z-index:1000;
-}
-.user-dropdown.show {
-  display:block;
-  animation:dropdownShow 0.2s ease;
-}
-.dropdown-item {
-  display:flex;
-  align-items:center;
-  gap:0.75rem;
-  padding:0.75rem 1rem;
-  color:var(--text-primary);
-  text-decoration:none;
-  transition:background-color 0.2s;
-}
-.dropdown-item:hover {
-  background:var(--button-secondaryFill);
-  text-decoration:none;
-}
 .kreta-main {
   flex:1;
   padding:clamp(1rem,3vw,2rem);

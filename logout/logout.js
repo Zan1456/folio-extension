@@ -11,8 +11,8 @@
       <div class="logout-container">
         <header class="logout-header">
           <p class="logo-text">
-            <img src=${chrome.runtime.getURL("images/firka_logo.png")} alt="Firka" class="logo">
-            Firka
+            <img src=${chrome.runtime.getURL("images/folio_logo.png")} alt="Folio" class="logo">
+            Folio
           </p>
         </header>
     

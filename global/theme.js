@@ -188,7 +188,7 @@
 
   function setPageTitleAndFavicon() {
     try {
-      document.title = "Firka - KRÉTA";
+      document.title = "Folio - KRÉTA";
 
       const existingFavicons = document.querySelectorAll(
         'link[rel="icon"], link[rel="shortcut icon"]',
@@ -203,13 +203,13 @@
         const favicon = document.createElement("link");
         favicon.rel = "icon";
         favicon.type = "image/png";
-        favicon.href = chrome.runtime.getURL("images/firka_logo_128.png");
+        favicon.href = chrome.runtime.getURL("images/folio_logo_128.png");
         document.head.appendChild(favicon);
 
         const shortcutIcon = document.createElement("link");
         shortcutIcon.rel = "shortcut icon";
         shortcutIcon.type = "image/png";
-        shortcutIcon.href = chrome.runtime.getURL("images/firka_logo_128.png");
+        shortcutIcon.href = chrome.runtime.getURL("images/folio_logo_128.png");
         document.head.appendChild(shortcutIcon);
       }
     } catch (error) {
@@ -284,10 +284,10 @@
         ),
     );
 
-    if (titleChanged || document.title !== "Firka - KRÉTA") {
+    if (titleChanged || document.title !== "Folio - KRÉTA") {
       clearTimeout(titleCheckTimeout);
       titleCheckTimeout = setTimeout(() => {
-        if (document.title !== "Firka - KRÉTA") {
+        if (document.title !== "Folio - KRÉTA") {
           setPageTitleAndFavicon();
         }
       }, 100);

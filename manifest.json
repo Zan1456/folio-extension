@@ -4,12 +4,12 @@
   "version": "1.5.0",
   "description": "KRÉTA webes verziójának újraírása",
   "icons": {
-    "128": "images/firka_logo_128.png"
+    "128": "images/folio_logo_128.png"
   },
   "action": {
     "default_popup": "settings/index.html",
     "default_icon": {
-      "128": "images/firka_logo_128.png"
+      "128": "images/folio_logo_128.png"
     }
   },
   "permissions": [

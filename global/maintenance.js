@@ -18,7 +18,7 @@ function checkMaintenancePage() {
 
   if (hasSpecificMessage || hasGeneralMaintenance) {
     const body = document.body;
-    const mainLogo = chrome.runtime.getURL("images/firka_logo_128.png");
+    const mainLogo = chrome.runtime.getURL("images/folio_logo_128.png");
     const cactusImage = chrome.runtime.getURL("images/cactus.png");
 
     const removeLoadingElements = () => {
@@ -57,7 +57,7 @@ function checkMaintenancePage() {
 
     const logo = document.createElement("img");
     logo.src = mainLogo;
-    logo.alt = "Firka Logo";
+    logo.alt = "Folio logo";
     logo.className = "maintenance-logo";
 
     const title = document.createElement("h1");

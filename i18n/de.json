@@ -90,7 +90,7 @@
     },
     "about": {
       "title": "Über",
-      "description": "Firka ist ein Open-Source-Projekt, das eine benutzerdefinierte Benutzeroberfläche für das KRÉTA-System erstellt.",
+      "description": "Folio ist ein Open-Source-Projekt, das eine benutzerdefinierte Benutzeroberfläche für das KRÉTA-System erstellt.",
       "github": "GitHub"
     },
     "support": {
@@ -124,7 +124,7 @@
     "upcoming_lessons": "Kommende Stunden",
     "homework_due": "Fällige Hausaufgaben",
     "news": "Nachrichten",
-    "grades": "Ihre Bewertungen",
+    "grades": "Ihre Noten",
     "absences": "Fehlzeiten",
     "notes": "Notizen",
     "exams": "Angekündigte Prüfungen",
@@ -511,14 +511,14 @@
   },
   "about": {
     "title": "Über",
-    "description": "Firka ist ein Open-Source-Projekt, das eine benutzerdefinierte Benutzeroberfläche für das KRÉTA-System erstellt.",
+    "description": "Folio ist ein Open-Source-Projekt, das eine benutzerdefinierte Benutzeroberfläche für das KRÉTA-System erstellt.",
     "support_title": "Unterstützung",
     "support_description": "Wenn Ihnen unsere Arbeit gefällt und Sie die Entwicklung unterstützen möchten, können Sie dies folgendermaßen tun:",
-    "version": "v1.3.0"
+    "version": "v1.5.0"
   },
   "app": {
-    "title": "Firka - KRÉTA",
-    "settings_title": "Firxa - Einstellungen"
+    "title": "Folio - KRÉTA",
+    "settings_title": "Folio - Einstellungen"
   },
   "forgotpassword": {
     "title": "Passwort vergessen",

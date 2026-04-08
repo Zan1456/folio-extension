@@ -65,8 +65,8 @@
       <header class="kreta-header">
         <div class="school-info">
           <p class="logo-text">
-            <img src=${chrome.runtime.getURL("images/firka_logo.png")} alt="Firka" class="logo">
-            Firka
+            <img src=${chrome.runtime.getURL("images/folio_logo.png")} alt="Folio" class="logo">
+            Folio
           </p>
           ${!settings.hideSchoolInfo ? `<div class="school-details">
             <span>${schoolCode || ""} - ${fullSchoolName || "Iskola"}</span>
