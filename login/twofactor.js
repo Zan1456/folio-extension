@@ -1,5 +1,13 @@
 async function transformTwoFactorPage() {
   try {
+    while (
+      typeof window.LanguageManager === "undefined" ||
+      !window.LanguageManager.t("two_factor.title") ||
+      window.LanguageManager.t("two_factor.title") === "two_factor.title"
+    ) {
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    }
+
     if (document.readyState !== "complete") {
       await new Promise((resolve) => {
         window.addEventListener("load", resolve);
@@ -10,20 +18,15 @@ async function transformTwoFactorPage() {
       loadingScreen.show();
     }
 
-    const existingForm = document.querySelector("form");
     const formData = {
-      action: existingForm?.getAttribute("action") || "",
       clientId: document.querySelector("#ClientId")?.value || "",
       rememberLogin: document.querySelector("#RememberLogin")?.value || "False",
       returnUrl: document.querySelector("#ReturnUrl")?.value || "",
-      isRecoveryCode:
-        document.querySelector("#IsRecoveryCode")?.value || "False",
+      verificationType: document.querySelector("#VerificationType")?.value || "Totp",
+      predefinedVerificationValue: document.querySelector("#PredefinedVerificationValue")?.value || "",
       requestToken:
         document.querySelector('input[name="__RequestVerificationToken"]')
           ?.value || "",
-      trustDeviceValue:
-        document.querySelector('input[name="TrustDevice"][type="hidden"]')
-          ?.value || "false",
     };
 
     const newHTML = `
@@ -31,45 +34,50 @@ async function transformTwoFactorPage() {
         <div class="login-card">
           <div class="card-header">
             <p class="logo-text">
-              <img src=${chrome.runtime.getURL("images/firka_logo.png")} alt="Firka" class="logo">
-              Firka
+              <img src=${chrome.runtime.getURL("images/folio_logo.png")} alt="Folio" class="logo">
+              Folio
             </p>
-            <h1 class="twofactor-title">${LanguageManager.t("twofactor.title")}</h1>
+            <h1 class="twofactor-title">${LanguageManager.t("two_factor.title")}</h1>
+            <span class="twofactor-subtitle">${LanguageManager.t("two_factor.instruction")}</span>
           </div>
 
-          <form class="twofactor-form" action="${formData.action}" method="post" id="twoFactorForm">
+          <form class="twofactor-form" method="post" id="twoFactorForm" novalidate>
             <input type="hidden" id="ClientId" name="ClientId" value="${formData.clientId}">
             <input type="hidden" id="RememberLogin" name="RememberLogin" value="${formData.rememberLogin}">
             <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="${formData.returnUrl}">
-            <input type="hidden" id="IsRecoveryCode" name="IsRecoveryCode" value="${formData.isRecoveryCode}">
+            <input type="hidden" id="VerificationType" name="VerificationType" value="${formData.verificationType}">
+            <input type="hidden" id="PredefinedVerificationValue" name="PredefinedVerificationValue" value="${formData.predefinedVerificationValue}">
             <input name="__RequestVerificationToken" type="hidden" value="${formData.requestToken}">
 
-            <div class="form-group password-group">
-              <input class="form-control" type="password" id="VerificationCode" name="VerificationCode" 
-                     placeholder="${LanguageManager.t("twofactor.code_placeholder")}" maxlength="256" autocomplete="off" required autofocus>
-              <button type="button" class="show-password" aria-label="${LanguageManager.t("twofactor.show_code")}">
-                <img src="${chrome.runtime.getURL("icons/eye-off.svg")}" alt="Show password" class="icon-eye">
-              </button>
-              <div class="error-message">${LanguageManager.t("twofactor.code_required")}</div>
+            <div class="otp-group">
+              <input id="VerificationValue_0" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" autofocus>
+              <input id="VerificationValue_1" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
+              <input id="VerificationValue_2" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
+              <span class="otp-separator">–</span>
+              <input id="VerificationValue_3" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
+              <input id="VerificationValue_4" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
+              <input id="VerificationValue_5" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
             </div>
 
-            <div class="form-check">
+            <div id="otp-error" class="error-message" style="display:none;">${LanguageManager.t("two_factor.code_required")}</div>
+
+            <div class="form-check mt-3">
               <input class="form-check-input" type="checkbox" id="trustDevice" name="TrustDevice" value="true">
               <label class="form-check-label" for="trustDevice">
-                ${LanguageManager.t("twofactor.trust_device")}
+                ${LanguageManager.t("two_factor.trust_device")}
               </label>
               <input name="TrustDevice" type="hidden" value="false">
             </div>
 
             <div class="d-flex justify-content-center mb-3 mt-4">
-              <button type="submit" class="btn-kreta">${LanguageManager.t("twofactor.verify_button")}</button>
+              <button type="submit" class="btn-kreta" id="verifyBtn" formaction="/account/loginwithtwofactor">${LanguageManager.t("two_factor.verify_button")}</button>
             </div>
 
             <div class="d-flex justify-content-center mt-3">
               <span class="subtext">
-                ${LanguageManager.t("twofactor.no_access")} 
-                <button type="submit" class="btn-link" formaction="/account/loginwithrecoverycode">
-                  ${LanguageManager.t("twofactor.recovery_code")}
+                ${LanguageManager.t("two_factor.no_access")}
+                <button type="submit" class="btn-link" formaction="/account/loginwithtwofactorrecoverycode">
+                  ${LanguageManager.t("two_factor.recovery_code")}
                 </button>
               </span>
             </div>
@@ -77,7 +85,7 @@ async function transformTwoFactorPage() {
         </div>
 
         <footer class="login-footer">
-          <a href="https://tudasbazis.ekreta.hu/pages/viewpage.action?pageId=4064926" 
+          <a href="https://tudasbazis.ekreta.hu/pages/viewpage.action?pageId=4064926"
              target="_blank" class="privacy-link">${LanguageManager.t("login.privacy_policy")}</a>
         </footer>
       </div>
@@ -85,10 +93,10 @@ async function transformTwoFactorPage() {
 
     const template = document.createElement('template');
     template.innerHTML = newHTML;
-    
+
     helper.clearElement(document.body);
     document.body.appendChild(template.content);
-    
+
     applyTheme();
     setupEventListeners();
     if (typeof loadingScreen !== "undefined") {
@@ -111,75 +119,101 @@ function applyTheme() {
 
 function setupEventListeners() {
   const twoFactorForm = document.getElementById("twoFactorForm");
-  const verificationInput = document.getElementById("VerificationCode");
-  const togglePasswordBtn = document.querySelector(".show-password");
-  const formInputs = document.querySelectorAll(".form-control");
+  const otpInputs = Array.from(document.querySelectorAll(".otp-input"));
 
-  if (togglePasswordBtn && verificationInput) {
-    togglePasswordBtn.addEventListener("click", () => {
-      const isPassword = verificationInput.type === "password";
-      verificationInput.type = isPassword ? "text" : "password";
-      const icon = togglePasswordBtn.querySelector(".icon-eye");
-      icon.src = chrome.runtime.getURL(
-        `icons/${isPassword ? "eye-on" : "eye-off"}.svg`,
-      );
+  otpInputs.forEach((input, index) => {
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace") {
+        if (input.value.length > 0) {
+          input.value = "";
+        } else if (index > 0) {
+          otpInputs[index - 1].focus();
+          otpInputs[index - 1].value = "";
+        }
+        e.preventDefault();
+      } else if (e.key === "ArrowLeft" && index > 0) {
+        otpInputs[index - 1].focus();
+        e.preventDefault();
+      } else if (e.key === "ArrowRight" && index < otpInputs.length - 1) {
+        otpInputs[index + 1].focus();
+        e.preventDefault();
+      }
     });
-  }
-  formInputs.forEach((input) => {
+
     input.addEventListener("input", () => {
-      validateInput(input);
+      const val = input.value.replace(/[^0-9]/g, "");
+      input.value = val.slice(-1);
+      hideOtpError();
+      if (input.value && index < otpInputs.length - 1) {
+        otpInputs[index + 1].focus();
+      }
     });
 
-    input.addEventListener("blur", () => {
-      validateInput(input, true);
+    input.addEventListener("paste", (e) => {
+      e.preventDefault();
+      const pasted = e.clipboardData
+        .getData("text")
+        .replace(/[^0-9]/g, "")
+        .slice(0, 6);
+      pasted.split("").forEach((char, i) => {
+        if (otpInputs[index + i]) {
+          otpInputs[index + i].value = char;
+        }
+      });
+      const nextEmpty = otpInputs.find((inp) => !inp.value);
+      (nextEmpty || otpInputs[otpInputs.length - 1]).focus();
+      hideOtpError();
+    });
+
+    input.addEventListener("focus", () => {
+      input.select();
     });
   });
+
   if (twoFactorForm) {
     twoFactorForm.addEventListener("submit", handleSubmit);
   }
 }
 
-function validateInput(input, showError = false) {
-  const isValid = input.value.trim().length > 0;
-  const errorElement = input.nextElementSibling?.nextElementSibling;
+function hideOtpError() {
+  const err = document.getElementById("otp-error");
+  if (err) err.style.display = "none";
+  document.querySelectorAll(".otp-input").forEach((inp) => inp.classList.remove("error"));
+}
 
-  if (!isValid && showError) {
-    input.classList.add("error");
-    errorElement?.classList.add("show");
-  } else {
-    input.classList.remove("error");
-    errorElement?.classList.remove("show");
-  }
-
-  return isValid;
+function getOtpValue() {
+  return Array.from(document.querySelectorAll(".otp-input"))
+    .map((inp) => inp.value)
+    .join("");
 }
 
 function handleSubmit(event) {
-  event.preventDefault();
+  const otpValue = getOtpValue();
 
-  const form = event.target;
-  const inputs = form.querySelectorAll(".form-control[required]");
-  let isValid = true;
-  inputs.forEach((input) => {
-    if (!validateInput(input, true)) {
-      isValid = false;
-    }
-  });
-  if (isValid) {
-    const submitButton = form.querySelector(".btn-kreta");
-    if (submitButton) {
-      submitButton.disabled = true;
-      helper.clearElement(submitButton);
-      const spinnerSpan = document.createElement('span');
-      spinnerSpan.className = 'spinner';
-      const textSpan = document.createElement('span');
-      textSpan.className = 'btn-text';
-      textSpan.textContent = LanguageManager.t('twofactor.verifying');
-      submitButton.appendChild(spinnerSpan);
-      submitButton.appendChild(textSpan);
-    }
+  if (otpValue.length < 6) {
+    event.preventDefault();
+    const err = document.getElementById("otp-error");
+    if (err) err.style.display = "block";
+    document.querySelectorAll(".otp-input").forEach((inp) => {
+      if (!inp.value) inp.classList.add("error");
+    });
+    document.querySelector(".otp-input:not([value])")?.focus() ||
+      document.getElementById("VerificationValue_0")?.focus();
+    return;
+  }
 
-    form.submit();
+  const verifyBtn = document.getElementById("verifyBtn");
+  if (event.submitter === verifyBtn || event.submitter?.formAction?.includes("loginwithtwofactor")) {
+    verifyBtn.disabled = true;
+    helper.clearElement(verifyBtn);
+    const spinnerSpan = document.createElement('span');
+    spinnerSpan.className = 'spinner';
+    const textSpan = document.createElement('span');
+    textSpan.className = 'btn-text';
+    textSpan.textContent = LanguageManager.t('two_factor.verifying');
+    verifyBtn.appendChild(spinnerSpan);
+    verifyBtn.appendChild(textSpan);
   }
 }
+
 transformTwoFactorPage();

@@ -388,7 +388,11 @@
     "code_required": "Bitte geben Sie das Einmalpasswort ein.",
     "verify_button": "Code überprüfen",
     "verifying": "Überprüfung...",
-    "trust_device": "Diesem Gerät vertrauen"
+    "trust_device": "Diesem Gerät vertrauen",
+    "instruction": "Geben Sie den 6-stelligen Code aus Ihrer Authenticator-App ein.",
+    "invalid_code": "Ungültiger Code. Bitte versuchen Sie es erneut.",
+    "no_access": "Kein Zugriff auf Ihr Gerät?",
+    "recovery_code": "Mit Wiederherstellungscode anmelden"
   },
   "logout": {
     "title": "Abmelden",

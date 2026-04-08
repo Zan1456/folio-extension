@@ -392,7 +392,9 @@
     "verifying": "Ellenőrzés...",
     "trust_device": "Eszköz megbízhatónak jelölése",
     "instruction": "Add meg a hitelesítő alkalmazásban megjelenő 6 számjegyű kódot.",
-    "invalid_code": "Hibás kód. Kérjük, próbáld újra."
+    "invalid_code": "Hibás kód. Kérjük, próbáld újra.",
+    "no_access": "Nem férsz hozzá a készülékedhez?",
+    "recovery_code": "Bejelentkezés helyreállító kóddal"
   },
   "logout": {
     "title": "Kijelentkezés",

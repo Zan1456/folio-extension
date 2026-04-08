@@ -390,7 +390,9 @@
     "verifying": "Verifying...",
     "trust_device": "Trust this device",
     "instruction": "Enter the 6-digit code shown in your authenticator app.",
-    "invalid_code": "Invalid code. Please try again."
+    "invalid_code": "Invalid code. Please try again.",
+    "no_access": "Don't have access to your device?",
+    "recovery_code": "Log in with recovery code"
   },
   "logout": {
     "title": "Logout",

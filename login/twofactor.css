@@ -53,8 +53,8 @@ body {
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:8px;
-  margin:16px 0;
+  gap:4px;
+  margin:16px 0 8px;
   background:var(--card-card) !important;
   border-bottom:1px solid rgba(0,0,0,0) !important;
 }
@@ -80,7 +80,60 @@ body {
   font-style:normal;
   font-weight:600;
   line-height:130%;
-  margin-bottom:16px;
+  margin-bottom:8px;
+}
+.twofactor-subtitle {
+  color:var(--text-secondary);
+  text-align:center;
+  font-family:Figtree;
+  font-size:14px;
+  font-style:normal;
+  font-weight:400;
+  line-height:130%;
+  margin-bottom:8px;
+}
+.otp-group {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin:24px 0 8px;
+}
+.otp-input {
+  width:48px;
+  height:56px;
+  text-align:center;
+  font-family:Montserrat;
+  font-size:22px;
+  font-weight:600;
+  color:var(--text-primary);
+  background:var(--accent-15);
+  border:2px solid transparent;
+  border-radius:12px;
+  outline:none;
+  transition:border-color 0.15s ease, background 0.15s ease;
+  -moz-appearance:textfield;
+}
+.otp-input::-webkit-outer-spin-button,
+.otp-input::-webkit-inner-spin-button {
+  -webkit-appearance:none;
+  margin:0;
+}
+.otp-input:focus {
+  border-color:var(--accent-accent);
+  background:var(--accent-15);
+}
+.otp-input.error {
+  border-color:var(--error-accent) !important;
+  background:var(--error-card) !important;
+}
+.otp-separator {
+  color:var(--text-secondary);
+  font-size:20px;
+  font-weight:300;
+  padding:0 2px;
+  user-select:none;
 }
 .twofactor-form {
   width:100%;
@@ -136,6 +189,7 @@ body {
 .form-check {
   display:flex;
   align-items:center;
+  justify-content:center;
   margin-top:16px;
   margin-bottom:16px;
 }
@@ -186,7 +240,7 @@ body {
 .btn-link {
   background:none;
   border:none;
-  color:var(--accent-accent);
+  color:var(--accent-accent) !important;
   font-family:Figtree;
   font-size:14px;
   font-style:normal;
