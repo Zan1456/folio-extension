@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="150" height="150" alt="firka_logo_128" src="https://github.com/QwIT-Development/firka-extension/blob/main/images/firka_logo_128.png?raw=true" />
+  <img width="150" height="150" alt="firka_logo_128" src="https://github.com/Zan1456/folio-extension/blob/main/images/folio_logo_128.png?raw=true" />
   <h1 align="center">Folio extension</h1>
 </p>
 
