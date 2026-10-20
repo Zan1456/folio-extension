@@ -68,6 +68,7 @@ class DashboardDataManager {
       notes: [],
       upcomingExams: [],
       news: [],
+      cs: []
     };
   }
 
@@ -280,12 +281,41 @@ class DashboardDataManager {
     }
   }
 
+  async extractCSData() {
+    const apiUrl = `https://${window.location.hostname}/api/TanuloKozossegiSzolgalataiApi/GetTanuloKozossegiSzolgalataiGrid?sort=IntervallumKezdete-desc&group=&filter=&data={}&_=1790974633976`;
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json, text/javascript, */*; q=0.01",
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed with status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    const CSData = JSON.parse(JSON.stringify(responseData));
+    for (let index = 0; index < CSData["Data"].length; index++) {
+      CSData["Data"][index]["IntervallumKezdete"] = CSData["Data"][index]["IntervallumKezdete"].slice(0, 10).split("-");
+      var evkezd = CSData["Data"][index]["IntervallumKezdete"][0];
+      CSData["Data"][index]["IntervallumKezdete"] = evkezd + " " + DashboardUtils.formatHungarianDate(CSData["Data"][index]["IntervallumKezdete"].join(".")).slice(0, -1);
+      
+      CSData["Data"][index]["IntervallumVege"] = CSData["Data"][index]["IntervallumVege"].slice(0, 10).split("-");
+      var evveg = CSData["Data"][index]["IntervallumVege"][0];
+      CSData["Data"][index]["IntervallumVege"] = evveg + " " + DashboardUtils.formatHungarianDate(CSData["Data"][index]["IntervallumVege"].join(".")).slice(0, -1);
+    }
+    this.dashboardData.cs.push(CSData);
+  }
+
   async extractAllData() {
     this.extractGradeData();
     this.extractAbsenceData();
     this.extractNoteData();
     this.extractExamData();
     await this.extractNewsData();
+    await this.extractCSData();
     return this.dashboardData;
   }
 }
@@ -333,6 +363,8 @@ class DashboardRenderer {
 
     cards.push(this.createNewsCard());
 
+    cards.push(this.createCSCard());
+
     if (cards.length === 1) {
       cards.unshift(this.createGradeCard());
     }
@@ -370,6 +402,7 @@ class DashboardRenderer {
       newsItems || LanguageManager.t("dashboard.not_supported"),
       "/Intezmeny/Faliujsag",
       LanguageManager.t("dashboard.all_news"),
+      "grid-column: 1 / -1; min-height: 0; height: auto;"
     );
   }
 
@@ -398,6 +431,7 @@ class DashboardRenderer {
       gradeItems,
       "/TanuloErtekeles/Osztalyzatok",
       LanguageManager.t("dashboard.all_grades"),
+      ""
     );
   }
 
@@ -423,6 +457,7 @@ class DashboardRenderer {
       absenceItems,
       "/Hianyzas/Hianyzasok",
       LanguageManager.t("dashboard.all_absences"),
+      ""
     );
   }
 
@@ -448,6 +483,7 @@ class DashboardRenderer {
       noteItems,
       "/TanuloErtekeles/InformaciokFeljegyzesek",
       LanguageManager.t("dashboard.all_messages"),
+      ""
     );
   }
 
@@ -473,12 +509,13 @@ class DashboardRenderer {
       examItems,
       "/Tanulo/TanuloBejelentettSzamonkeresek",
       LanguageManager.t("dashboard.all_exams"),
+      ""
     );
   }
 
-  createCard(title, content, linkHref, linkText) {
+  createCard(title, content, linkHref, linkText, sty) {
     return `
-      <div class="widget-card card">
+      <div class="widget-card card" style="${sty}">
         <div class="widget-header">
           <h2 class="widget-card-title">${title}</h2>
         </div>
@@ -495,6 +532,28 @@ class DashboardRenderer {
         </div>
       </div>
     `;
+  }
+
+  createCSCard() {
+    const content = this.data.cs[0]?.Data?.length ? this.generateCSList(this.data.cs[0]) : `<div class="widget-empty">${LanguageManager.t("dashboard.not_supported")}</div>`;
+    return `
+      <div class="widget-card card" style="min-height: 100px;  height: auto; flex: 0">
+        <div class="widget-header">
+          <h2 class="widget-card-title">${LanguageManager.t("cs.title")}</h2>
+        </div>
+        <div class="widget-content card-content" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">${content}</div>
+      </div>
+    `;
+  }
+
+  generateCSList(data) {
+    const ures = !data.Data.some((item) => item.Megjegyzes?.trim());
+    let HTML = `<table style="width: max-content; min-width: 100%; white-space: nowrap;"><tr><th>${LanguageManager.t('cs.start')}</th><th>${LanguageManager.t('cs.end')}</th><th>${LanguageManager.t('cs.name')}</th><th>${LanguageManager.t('cs.hour')}</th><th>${LanguageManager.t('cs.activity')}</th>${ures ? "" : "<th>"+LanguageManager.t('cs.notes')+"</th>"}</tr>`;
+    for (let index = 0; index < data["Data"].length; index++) {
+      HTML += `<tr><td class="widget-date exam-date" style="text-align:left">${data["Data"][index]["IntervallumKezdete"]}</td><td class="widget-date exam-date" style="text-align:left">${data["Data"][index]["IntervallumVege"]}</td><td>${data["Data"][index]["TeljesitesiHelye"]}</td><td>${data["Data"][index]["Oraszam"]}</td><td>${data["Data"][index]["KozossegiSzolgalatTipusa_DNAME"]}</td>${data["Data"][index]["Megjegyzes"] ? '<td>'+data["Data"][index]["Megjegyzes"]+'</td>' : ""}</tr>`
+    }
+    HTML += "</table>";
+    return HTML;
   }
 
   async render() {

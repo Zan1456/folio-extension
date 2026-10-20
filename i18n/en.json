@@ -518,7 +518,7 @@
     "description": "Folio is an open source project that creates a custom user interface for the KRÉTA system.",
     "support_title": "Support",
     "support_description": "If you like our work and want to support development, you can do so in the following way:",
-    "version": "v1.5.0"
+    "version": "v1.5.1"
   },
   "app": {
     "title": "Folio - KRÉTA",
@@ -596,5 +596,14 @@
       "mark_unread": "Mark as unread",
       "back_to_messages": "Back to messages"
     }
+  }, 
+  "cs": {
+    "title" : "Community Service",
+    "start" : "From",
+    "end" : "To",
+    "hour": "Hours",
+    "name" : "Institution's name",
+    "activity" : "Activity",
+    "notes" : "Notes"
   }
 }
