@@ -191,6 +191,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         description: "A bejelentett dolgozatok kártya elrejtése",
         descriptionKey: "settings.page_settings.bulletin.hide_exams_desc",
         value: savedSettings.hideExams || false
+      },
+      {
+        key: "hideTimetable",
+        type: "toggle",
+        label: "Órarend elrejtése",
+        labelKey: "settings.page_settings.bulletin.hide_timetable",
+        description: "A mai órák kártya elrejtése",
+        descriptionKey: "settings.page_settings.bulletin.hide_timetable_desc",
+        value: savedSettings.hideTimetable || false
+      },
+      {
+        key: "hideHomework",
+        type: "toggle",
+        label: "Házi feladatok elrejtése",
+        labelKey: "settings.page_settings.bulletin.hide_homework",
+        description: "A házi feladatok kártya elrejtése",
+        descriptionKey: "settings.page_settings.bulletin.hide_homework_desc",
+        value: savedSettings.hideHomework || false
+      },
+      {
+        key: "hideCommunityService",
+        type: "toggle",
+        label: "Közösségi szolgálat elrejtése",
+        labelKey: "settings.page_settings.bulletin.hide_community_service",
+        description: "A közösségi szolgálat kártya elrejtése",
+        descriptionKey: "settings.page_settings.bulletin.hide_community_service_desc",
+        value: savedSettings.hideCommunityService || false
       }
     ];
   }

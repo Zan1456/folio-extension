@@ -37,7 +37,13 @@
         "hide_notes": "Hide notes",
         "hide_notes_desc": "Hide the notes card",
         "hide_exams": "Hide announced exams",
-        "hide_exams_desc": "Hide the announced exams card"
+        "hide_exams_desc": "Hide the announced exams card",
+        "hide_timetable": "Hide timetable",
+        "hide_timetable_desc": "Hide the card with today's lessons",
+        "hide_homework": "Hide homework",
+        "hide_homework_desc": "Hide the homework card",
+        "hide_community_service": "Hide community service",
+        "hide_community_service_desc": "Hide the community service card"
       },
       "grades": {
         "hide_chart": "Hide chart",
@@ -134,7 +140,32 @@
     "all_messages": "All your messages",
     "all_exams": "All tests",
     "not_supported": "There is currently no data to show",
-    "evaluation": "Evaluation"
+    "evaluation": "Evaluation",
+    "greeting": "Hi, {name}!",
+    "stat_average": "Average",
+    "stat_lessons_today": "Lessons today",
+    "stat_next_at": "Next: {time}",
+    "stat_exams_week": "Tests in 7 days",
+    "stat_homework": "Homework",
+    "stat_unjustified": "Unexcused lessons",
+    "stat_pending": "{count} awaiting excuse",
+    "lessons_title_today": "Today's lessons",
+    "lessons_title_tomorrow": "Tomorrow's lessons",
+    "lessons_title_day": "Lessons – {day}",
+    "no_lessons": "No lessons in the coming days.",
+    "full_timetable": "Full timetable",
+    "now": "Now",
+    "no_exams": "No tests announced for the next two weeks.",
+    "homework_title": "Homework",
+    "no_homework": "No homework due.",
+    "deadline": "Due",
+    "averages_title": "Subject averages",
+    "no_absences": "No absences recorded.",
+    "all_notes": "All notes",
+    "edit_layout": "Edit layout",
+    "done_editing": "Done",
+    "reset_layout": "Default layout",
+    "move_card": "Move card"
   },
   "grades": {
     "title": "Grades",
@@ -522,7 +553,7 @@
   },
   "app": {
     "title": "Folio - KRÉTA",
-    "settings_title": "Folio - Settings"
+    "settings_title": "Settings - Folio"
   },
   "forgotpassword": {
     "title": "Forgot Password",
@@ -596,14 +627,11 @@
       "mark_unread": "Mark as unread",
       "back_to_messages": "Back to messages"
     }
-  }, 
+  },
   "cs": {
-    "title" : "Community Service",
-    "start" : "From",
-    "end" : "To",
-    "hour": "Hours",
-    "name" : "Institution's name",
-    "activity" : "Activity",
-    "notes" : "Notes"
+    "title": "Community Service",
+    "hours_unit": "hours",
+    "completed": "Completed",
+    "empty": "No community service recorded yet."
   }
 }

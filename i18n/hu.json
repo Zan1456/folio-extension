@@ -37,7 +37,13 @@
         "hide_notes": "Feljegyzések elrejtése",
         "hide_notes_desc": "A feljegyzések kártya elrejtése",
         "hide_exams": "Bejelentett dolgozatok elrejtése",
-        "hide_exams_desc": "A bejelentett dolgozatok kártya elrejtése"
+        "hide_exams_desc": "A bejelentett dolgozatok kártya elrejtése",
+        "hide_timetable": "Órarend elrejtése",
+        "hide_timetable_desc": "A mai órák kártya elrejtése",
+        "hide_homework": "Házi feladatok elrejtése",
+        "hide_homework_desc": "A házi feladatok kártya elrejtése",
+        "hide_community_service": "Közösségi szolgálat elrejtése",
+        "hide_community_service_desc": "A közösségi szolgálat kártya elrejtése"
       },
       "grades": {
         "hide_chart": "Grafikon elrejtése",
@@ -136,7 +142,32 @@
     "all_messages": "Összes üzeneted",
     "all_exams": "Összes dolgozat",
     "not_supported": "Jelenleg nincsen adat amivel fel lehetne tölteni",
-    "evaluation": "Értékelés"
+    "evaluation": "Értékelés",
+    "greeting": "Szia, {name}!",
+    "stat_average": "Átlag",
+    "stat_lessons_today": "Óra ma",
+    "stat_next_at": "Következő: {time}",
+    "stat_exams_week": "Dolgozat 7 napon belül",
+    "stat_homework": "Házi feladat",
+    "stat_unjustified": "Igazolatlan óra",
+    "stat_pending": "{count} igazolásra vár",
+    "lessons_title_today": "Mai órák",
+    "lessons_title_tomorrow": "Holnapi órák",
+    "lessons_title_day": "Órák – {day}",
+    "no_lessons": "Nincs órád a következő napokban.",
+    "full_timetable": "Teljes órarend",
+    "now": "Most",
+    "no_exams": "Nincs bejelentett dolgozat a következő két hétben.",
+    "homework_title": "Házi feladatok",
+    "no_homework": "Nincs határidős házi feladatod.",
+    "deadline": "Határidő",
+    "averages_title": "Tantárgyi átlagok",
+    "no_absences": "Nincs rögzített mulasztásod.",
+    "all_notes": "Összes feljegyzés",
+    "edit_layout": "Elrendezés szerkesztése",
+    "done_editing": "Kész",
+    "reset_layout": "Alapra",
+    "move_card": "Kártya mozgatása"
   },
   "grades": {
     "title": "Jegyek",
@@ -524,7 +555,7 @@
   },
   "app": {
     "title": "Folio - KRÉTA",
-    "settings_title": "Folio - Beállítások"
+    "settings_title": "Beállítások - Folio"
   },
   "forgotpassword": {
     "title": "Elfelejtett jelszó",
@@ -600,12 +631,9 @@
     }
   },
   "cs": {
-    "title" : "Közösségi szolgálat",
-    "start" : "Mettől",
-    "end" : "Meddig",
-    "hour": "Óra",
-    "name" : "Intézmény neve",
-    "activity" : "Tevékenység",
-    "notes" : "Megjegyzések"
+    "title": "Közösségi szolgálat",
+    "hours_unit": "óra",
+    "completed": "Teljesítve",
+    "empty": "Még nincs rögzített közösségi szolgálat."
   }
 }

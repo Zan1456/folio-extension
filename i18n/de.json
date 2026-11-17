@@ -38,7 +38,13 @@
         "hide_notes": "Notizen ausblenden",
         "hide_notes_desc": "Die Notizenkarte ausblenden",
         "hide_exams": "Angekündigte Prüfungen ausblenden",
-        "hide_exams_desc": "Die Karte für angekündigte Prüfungen ausblenden"
+        "hide_exams_desc": "Die Karte für angekündigte Prüfungen ausblenden",
+        "hide_timetable": "Stundenplan ausblenden",
+        "hide_timetable_desc": "Die Karte mit den heutigen Stunden ausblenden",
+        "hide_homework": "Hausaufgaben ausblenden",
+        "hide_homework_desc": "Die Hausaufgaben-Karte ausblenden",
+        "hide_community_service": "Gemeinschaftsdienst ausblenden",
+        "hide_community_service_desc": "Die Gemeinschaftsdienst-Karte ausblenden"
       },
       "grades": {
         "hide_chart": "Diagramm ausblenden",
@@ -134,7 +140,32 @@
     "all_messages": "Alle Nachrichten",
     "all_exams": "Alle Prüfungen",
     "not_supported": "Derzeit sind keine Daten zum Laden verfügbar",
-    "evaluation": "Bewertung"
+    "evaluation": "Bewertung",
+    "greeting": "Hallo, {name}!",
+    "stat_average": "Durchschnitt",
+    "stat_lessons_today": "Stunden heute",
+    "stat_next_at": "Nächste: {time}",
+    "stat_exams_week": "Prüfungen in 7 Tagen",
+    "stat_homework": "Hausaufgaben",
+    "stat_unjustified": "Unentschuldigte Stunden",
+    "stat_pending": "{count} warten auf Entschuldigung",
+    "lessons_title_today": "Heutige Stunden",
+    "lessons_title_tomorrow": "Morgige Stunden",
+    "lessons_title_day": "Stunden – {day}",
+    "no_lessons": "In den nächsten Tagen keine Stunden.",
+    "full_timetable": "Ganzer Stundenplan",
+    "now": "Jetzt",
+    "no_exams": "Keine angekündigten Prüfungen in den nächsten zwei Wochen.",
+    "homework_title": "Hausaufgaben",
+    "no_homework": "Keine fälligen Hausaufgaben.",
+    "deadline": "Fällig",
+    "averages_title": "Fachdurchschnitte",
+    "no_absences": "Keine Fehlzeiten erfasst.",
+    "all_notes": "Alle Einträge",
+    "edit_layout": "Layout bearbeiten",
+    "done_editing": "Fertig",
+    "reset_layout": "Standardlayout",
+    "move_card": "Karte verschieben"
   },
   "grades": {
     "title": "Noten",
@@ -522,7 +553,7 @@
   },
   "app": {
     "title": "Folio - KRÉTA",
-    "settings_title": "Folio - Einstellungen"
+    "settings_title": "Einstellungen - Folio"
   },
   "forgotpassword": {
     "title": "Passwort vergessen",
@@ -598,12 +629,9 @@
     }
   },
   "cs": {
-    "title" : "Gemeinschaftsdienst",
-    "start" : "Von",
-    "end" : "Bis",
-    "hour": "Stunden",
-    "name" : "Name der Einrichtung",
-    "activity" : "Tätigkeit",
-    "notes" : "Anmerkungen"
+    "title": "Gemeinschaftsdienst",
+    "hours_unit": "Std.",
+    "completed": "Erfüllt",
+    "empty": "Noch kein Gemeinschaftsdienst erfasst."
   }
 }

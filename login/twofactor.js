@@ -50,13 +50,13 @@ async function transformTwoFactorPage() {
             <input name="__RequestVerificationToken" type="hidden" value="${formData.requestToken}">
 
             <div class="otp-group">
-              <input id="VerificationValue_0" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" autofocus>
-              <input id="VerificationValue_1" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
-              <input id="VerificationValue_2" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
+              <input id="VerificationValue_0" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" autofocus>
+              <input id="VerificationValue_1" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6">
+              <input id="VerificationValue_2" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6">
               <span class="otp-separator">–</span>
-              <input id="VerificationValue_3" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
-              <input id="VerificationValue_4" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
-              <input id="VerificationValue_5" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1">
+              <input id="VerificationValue_3" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6">
+              <input id="VerificationValue_4" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6">
+              <input id="VerificationValue_5" name="VerificationValue" class="otp-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6">
             </div>
 
             <div id="otp-error" class="error-message" style="display:none;">${LanguageManager.t("two_factor.code_required")}</div>
@@ -141,8 +141,14 @@ function setupEventListeners() {
     });
 
     input.addEventListener("input", () => {
-      const val = input.value.replace(/[^0-9]/g, "");
-      input.value = val.slice(-1);
+      const digits = input.value.replace(/[^0-9]/g, "");
+      if (digits.length > 1) {
+        // Autofill (e.g. password managers) puts the whole code into one field
+        const start = digits.length >= otpInputs.length ? 0 : index;
+        fillOtpDigits(otpInputs, start, digits);
+        return;
+      }
+      input.value = digits;
       hideOtpError();
       if (input.value && index < otpInputs.length - 1) {
         otpInputs[index + 1].focus();
@@ -151,18 +157,9 @@ function setupEventListeners() {
 
     input.addEventListener("paste", (e) => {
       e.preventDefault();
-      const pasted = e.clipboardData
-        .getData("text")
-        .replace(/[^0-9]/g, "")
-        .slice(0, 6);
-      pasted.split("").forEach((char, i) => {
-        if (otpInputs[index + i]) {
-          otpInputs[index + i].value = char;
-        }
-      });
-      const nextEmpty = otpInputs.find((inp) => !inp.value);
-      (nextEmpty || otpInputs[otpInputs.length - 1]).focus();
-      hideOtpError();
+      const digits = e.clipboardData.getData("text").replace(/[^0-9]/g, "");
+      const start = digits.length >= otpInputs.length ? 0 : index;
+      fillOtpDigits(otpInputs, start, digits);
     });
 
     input.addEventListener("focus", () => {
@@ -173,6 +170,18 @@ function setupEventListeners() {
   if (twoFactorForm) {
     twoFactorForm.addEventListener("submit", handleSubmit);
   }
+}
+
+function fillOtpDigits(otpInputs, start, digits) {
+  digits
+    .slice(0, otpInputs.length - start)
+    .split("")
+    .forEach((char, i) => {
+      otpInputs[start + i].value = char;
+    });
+  const nextEmpty = otpInputs.find((inp) => !inp.value);
+  (nextEmpty || otpInputs[otpInputs.length - 1]).focus();
+  hideOtpError();
 }
 
 function hideOtpError() {

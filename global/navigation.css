@@ -421,8 +421,10 @@
     filter: brightness(0) saturate(100%) invert(55%) sepia(60%) saturate(700%) hue-rotate(120deg) brightness(100%) contrast(100%);
   }
 
-  body {
-    padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+  /* Keep the page content clear of the fixed bottom navigation, even where
+     page styles reset the body padding */
+  body:has(.mobile-bottom-nav) {
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
 

@@ -186,9 +186,40 @@
     }
   }
 
+  // [host, path prefix, translation key, Hungarian fallback until translations load]
+  const PAGE_TITLES = [
+    ["intezmenykereso.e-kreta.hu", "/", "search.title", "Válassz iskolát"],
+    ["eugyintezes.e-kreta.hu", "/", "navigation.messages", "Üzenetek"],
+    ["idp.e-kreta.hu", "/account/loginwithtwofactor", "two_factor.title", "Kétfaktoros azonosítás"],
+    ["idp.e-kreta.hu", "/account/logout", "logout.title", "Kijelentkezés"],
+    ["idp.e-kreta.hu", "/account/login", "login.title", "Bejelentkezés"],
+    [null, "/intezmeny/faliujsag", "navigation.dashboard", "Kezdőlap"],
+    [null, "/tanuloertekeles/osztalyzatok", "navigation.grades", "Jegyek"],
+    [null, "/orarend/informaciokorarend", "navigation.timetable", "Órarend"],
+    [null, "/hianyzas/hianyzasok", "navigation.absences", "Mulasztások"],
+    [null, "/adminisztracio/profil", "navigation.profile", "Profil"],
+    [null, "/tanulo/tanulohazifeladat", "navigation.homework", "Házi feladatok"],
+    [null, "/adminisztracio/elfelejtettjelszo", "forgot_password.title", "Elfelejtett jelszó"],
+    [null, "/adminisztracio/belepeskezelo", "roleselect.student_book", "Ellenőrzőkönyv"],
+  ];
+
+  function getPageTitle() {
+    const host = location.hostname.toLowerCase();
+    const path = location.pathname.toLowerCase();
+    const page = PAGE_TITLES.find(
+      ([pageHost, prefix]) => (!pageHost || pageHost === host) && path.startsWith(prefix),
+    );
+    if (!page) return "Folio";
+
+    const [, , key, fallback] = page;
+    const translated = window.LanguageManager?.t(key);
+    const name = translated && translated !== key ? translated : fallback;
+    return `${name} - Folio`;
+  }
+
   function setPageTitleAndFavicon() {
     try {
-      document.title = "Folio - KRÉTA";
+      document.title = getPageTitle();
 
       const existingFavicons = document.querySelectorAll(
         'link[rel="icon"], link[rel="shortcut icon"]',
@@ -239,6 +270,10 @@
     initializeTheme();
   }
 
+  window.addEventListener("languageChanged", () => {
+    document.title = getPageTitle();
+  });
+
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "changeTheme") {
       if (message.customThemes) {
@@ -284,10 +319,10 @@
         ),
     );
 
-    if (titleChanged || document.title !== "Folio - KRÉTA") {
+    if (titleChanged || document.title !== getPageTitle()) {
       clearTimeout(titleCheckTimeout);
       titleCheckTimeout = setTimeout(() => {
-        if (document.title !== "Folio - KRÉTA") {
+        if (document.title !== getPageTitle()) {
           setPageTitleAndFavicon();
         }
       }, 100);

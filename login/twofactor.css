@@ -190,21 +190,41 @@ body {
   display:flex;
   align-items:center;
   justify-content:center;
+  gap:10px;
+  min-height:0;
+  padding:0 !important;
   margin-top:16px;
   margin-bottom:16px;
 }
-.form-check-input {
-  width:20px;
-  height:20px;
-  margin-right:8px;
+.form-check .form-check-input {
+  -webkit-appearance:none;
+  appearance:none;
+  flex-shrink:0;
+  float:none;
+  width:22px;
+  height:22px;
+  margin:0 !important;
   border-radius:6px;
   border:2px solid var(--accent-accent);
-  background-color:var(--card-card);
+  background-color:var(--accent-15);
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:14px;
+  box-shadow:none;
   cursor:pointer;
+  transition:background-color 0.15s ease, border-color 0.15s ease;
 }
-.form-check-input:checked {
+.form-check .form-check-input:hover {
+  border-color:var(--accent-secondary);
+}
+.form-check .form-check-input:focus-visible {
+  outline:2px solid var(--accent-secondary);
+  outline-offset:2px;
+}
+.form-check .form-check-input:checked {
   background-color:var(--accent-accent);
   border-color:var(--accent-accent);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E");
 }
 .form-check-label {
   color:var(--text-primary);
@@ -214,6 +234,7 @@ body {
   font-weight:400;
   line-height:130%;
   cursor:pointer;
+  user-select:none;
 }
 .btn-kreta {
   display:flex;
